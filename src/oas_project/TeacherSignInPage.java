@@ -15,7 +15,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
      */
     public TeacherSignInPage() {
         initComponents();
-        cbxSubjects.setSelectedItem(null);
+        cbxSubjects1.setSelectedItem(null);
     }
 
     /**
@@ -35,11 +35,14 @@ public class TeacherSignInPage extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        cbxSubjects = new javax.swing.JComboBox<>();
+        cbxSubjects1 = new javax.swing.JComboBox<>();
         cbxGLevels = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        cbxSubjects3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,78 +50,119 @@ public class TeacherSignInPage extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(206, 206, 206));
 
-        jLabel1.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Name:");
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setText("Last Name, First Name M.I.");
 
-        jLabel3.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Username:");
 
         jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel4.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Password:");
 
         jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-
-        cbxSubjects.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTEGRATED SCIENCE", "BIOLOGY", "CHEMISTRY", "PHYSICS", "MATHEMATICS", "ENGLISH", "FILIPINO", "SOCIAL SCIENCE", "P.E.H.M", "VALED", "ADTECH", "STATISTICS", "(STEM) RESEARCH", "COMPUTER SCIENCE", "EARTH SCIENCE", "ENGINEERING SCIENCE", "TECHNOLOGY", "AGRICULTURE" }));
-        cbxSubjects.addActionListener(new java.awt.event.ActionListener() {
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxSubjectsActionPerformed(evt);
+                jTextField3ActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        cbxSubjects1.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        cbxSubjects1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTEGRATED SCIENCE", "BIOLOGY", "CHEMISTRY", "PHYSICS", "MATHEMATICS", "ENGLISH", "FILIPINO", "SOCIAL SCIENCE", "P.E.H.M.", "VALED", "ADTECH", "STATISTICS", "(STEM) RESEARCH", "COMPUTER SCIENCE", "EARTH SCIENCE", " " }));
+        cbxSubjects1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxSubjects1ActionPerformed(evt);
+            }
+        });
+
+        cbxGLevels.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        cbxGLevels.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7", "8", "9", "10", "11", "12", " " }));
+
+        jLabel5.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Subject handling:");
 
-        jLabel6.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Grade level handling:");
 
-        jLabel7.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText(" kebede");
+        jComboBox1.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "YES", "NO", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Are you handling elective subjects?");
+
+        jLabel9.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("If yes, subject handling:");
+
+        cbxSubjects3.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        cbxSubjects3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxSubjects3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(117, 117, 117)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxSubjects1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel6))
+                    .addComponent(cbxGLevels, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxSubjects3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(152, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxGLevels, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(161, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel4)))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(214, 214, 214))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel2)
+                        .addGap(99, 99, 99))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,16 +179,22 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(32, 32, 32)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(cbxSubjects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxSubjects1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(cbxGLevels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxGLevels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxSubjects3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(251, Short.MAX_VALUE))
         );
 
@@ -152,10 +202,10 @@ public class TeacherSignInPage extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,17 +229,17 @@ public class TeacherSignInPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxSubjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSubjectsActionPerformed
+    private void cbxSubjects1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSubjects1ActionPerformed
         // TODO add your handling code here:
         try {
-            if (cbxSubjects.getSelectedItem().equals("INTEGRATED SCIENCE")){
+            if (cbxSubjects1.getSelectedItem().equals("INTEGRATED SCIENCE")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
                 cbxGLevels.addItem("7");
                 cbxGLevels.addItem("8");
 
-            } else if (cbxSubjects.getSelectedItem().equals("BIOLOGY")){
+            } else if (cbxSubjects1.getSelectedItem().equals("BIOLOGY")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -198,7 +248,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects.getSelectedItem().equals("CHEMISTRY")){
+            } else if (cbxSubjects1.getSelectedItem().equals("CHEMISTRY")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -207,7 +257,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects.getSelectedItem().equals("PHYSICS")){
+            } else if (cbxSubjects1.getSelectedItem().equals("PHYSICS")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -216,18 +266,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects.getSelectedItem().equals("MATHEMATICS")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("7");
-                cbxGLevels.addItem("8");
-                cbxGLevels.addItem("9");
-                cbxGLevels.addItem("10");
-                cbxGLevels.addItem("11");
-                cbxGLevels.addItem("12");
-
-            } else if (cbxSubjects.getSelectedItem().equals("ENGLISH")){
+            } else if (cbxSubjects1.getSelectedItem().equals("MATHEMATICS")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -238,7 +277,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects.getSelectedItem().equals("FILIPINO")){
+            } else if (cbxSubjects1.getSelectedItem().equals("ENGLISH")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -249,7 +288,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects.getSelectedItem().equals("SOCIAL SCIENCE")){
+            } else if (cbxSubjects1.getSelectedItem().equals("FILIPINO")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -260,46 +299,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects.getSelectedItem().equals("P.E.H.M")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("7");
-                cbxGLevels.addItem("8");
-                cbxGLevels.addItem("9");
-                cbxGLevels.addItem("10");
-
-            } else if (cbxSubjects.getSelectedItem().equals("VALED")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("7");
-                cbxGLevels.addItem("8");
-                cbxGLevels.addItem("9");
-                cbxGLevels.addItem("10");
-
-            } else if (cbxSubjects.getSelectedItem().equals("ADTECH")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("7");
-                cbxGLevels.addItem("8");
-
-            } else if (cbxSubjects.getSelectedItem().equals("STATISTICS")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("9");
-
-            } else if (cbxSubjects.getSelectedItem().equals("(STEM) RESEARCH")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("10");
-                cbxGLevels.addItem("11");
-                cbxGLevels.addItem("12");
-
-            } else if (cbxSubjects.getSelectedItem().equals("COMPUTER SCIENCE")){
+            } else if (cbxSubjects1.getSelectedItem().equals("SOCIAL SCIENCE")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -310,27 +310,77 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects.getSelectedItem().equals("EARTH SCIENCE")){
+            } else if (cbxSubjects1.getSelectedItem().equals("P.E.H.M.")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("7");
+                cbxGLevels.addItem("8");
+                cbxGLevels.addItem("9");
+                cbxGLevels.addItem("10");
+
+            } else if (cbxSubjects1.getSelectedItem().equals("VALED")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("7");
+                cbxGLevels.addItem("8");
+                cbxGLevels.addItem("9");
+                cbxGLevels.addItem("10");
+
+            } else if (cbxSubjects1.getSelectedItem().equals("ADTECH")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("7");
+                cbxGLevels.addItem("8");
+
+            } else if (cbxSubjects1.getSelectedItem().equals("STATISTICS")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("9");
+
+            } else if (cbxSubjects1.getSelectedItem().equals("(STEM) RESEARCH")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("10");
+                cbxGLevels.addItem("11");
+                cbxGLevels.addItem("12");
+
+            } else if (cbxSubjects1.getSelectedItem().equals("COMPUTER SCIENCE")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("7");
+                cbxGLevels.addItem("8");
+                cbxGLevels.addItem("9");
+                cbxGLevels.addItem("10");
+                cbxGLevels.addItem("11");
+                cbxGLevels.addItem("12");
+
+            } else if (cbxSubjects1.getSelectedItem().equals("EARTH SCIENCE")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);                        
                 cbxGLevels.addItem("8");
 
-            } else if (cbxSubjects.getSelectedItem().equals("ENGINEERING SCIENCE")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);                        
-                cbxGLevels.addItem("11");
-                cbxGLevels.addItem("12");
-
-            } else if (cbxSubjects.getSelectedItem().equals("TECHNOLOGY")){
+            } else if (cbxSubjects1.getSelectedItem().equals("ENGINEERING SCIENCE")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);                        
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects.getSelectedItem().equals("AGRICULTURE")){
+            } else if (cbxSubjects1.getSelectedItem().equals("TECHNOLOGY")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);                        
+                cbxGLevels.addItem("11");
+                cbxGLevels.addItem("12");
+
+            } else if (cbxSubjects1.getSelectedItem().equals("AGRICULTURE")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);                        
@@ -341,7 +391,19 @@ public class TeacherSignInPage extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }//GEN-LAST:event_cbxSubjectsActionPerformed
+    }//GEN-LAST:event_cbxSubjects1ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void cbxSubjects3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSubjects3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxSubjects3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,13 +442,16 @@ public class TeacherSignInPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbxGLevels;
-    private javax.swing.JComboBox<String> cbxSubjects;
+    private javax.swing.JComboBox<String> cbxSubjects1;
+    private javax.swing.JComboBox<String> cbxSubjects3;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
