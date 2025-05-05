@@ -34,8 +34,8 @@ public class IdentificationPage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnTeacher = new javax.swing.JButton();
+        btnRegisrtrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -59,21 +59,26 @@ public class IdentificationPage extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("WELCOME TO");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 19)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(51, 51, 51));
-        jButton1.setText("Teacher");
-        jButton1.setAlignmentY(0.0F);
-        jButton1.setBorder(null);
-
-        jButton2.setFont(new java.awt.Font("Segoe UI Emoji", 0, 19)); // NOI18N
-        jButton2.setText("Registrar");
-        jButton2.setActionCommand("jButton2");
-        jButton2.setAlignmentY(0.0F);
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnTeacher.setBackground(new java.awt.Color(255, 255, 255));
+        btnTeacher.setFont(new java.awt.Font("Sylfaen", 1, 19)); // NOI18N
+        btnTeacher.setForeground(new java.awt.Color(51, 51, 51));
+        btnTeacher.setText("Teacher");
+        btnTeacher.setAlignmentY(0.0F);
+        btnTeacher.setBorder(null);
+        btnTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnTeacherActionPerformed(evt);
+            }
+        });
+
+        btnRegisrtrar.setFont(new java.awt.Font("Sylfaen", 0, 19)); // NOI18N
+        btnRegisrtrar.setText("Registrar");
+        btnRegisrtrar.setActionCommand("jButton2");
+        btnRegisrtrar.setAlignmentY(0.0F);
+        btnRegisrtrar.setBorder(null);
+        btnRegisrtrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisrtrarActionPerformed(evt);
             }
         });
 
@@ -82,14 +87,14 @@ public class IdentificationPage extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnRegisrtrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(btnRegisrtrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -97,7 +102,7 @@ public class IdentificationPage extends javax.swing.JFrame {
         jLabel2.setText("nline");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Please identify yourself below:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -194,9 +199,16 @@ public class IdentificationPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnRegisrtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisrtrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnRegisrtrarActionPerformed
+
+    private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
+        new TeacherSignInPage().setVisible(true);
+        IdentificationPage.this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_btnTeacherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,8 +246,8 @@ public class IdentificationPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnRegisrtrar;
+    private javax.swing.JButton btnTeacher;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
