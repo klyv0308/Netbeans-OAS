@@ -105,7 +105,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 539));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -113,25 +113,20 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(945, 600));
 
         lblHdr1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblHdr1.setForeground(new java.awt.Color(0, 0, 0));
         lblHdr1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHdr1.setText("Philippine Science High School - ZRC");
 
         lblHdr2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblHdr2.setForeground(new java.awt.Color(0, 0, 0));
         lblHdr2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHdr2.setText("Class Admission Slip");
 
         lblText1.setFont(new java.awt.Font("Arial Narrow", 1, 20)); // NOI18N
-        lblText1.setForeground(new java.awt.Color(0, 0, 0));
         lblText1.setText("To all teachers concerned:");
 
         lblText2.setFont(new java.awt.Font("Arial Narrow", 1, 20)); // NOI18N
-        lblText2.setForeground(new java.awt.Color(0, 0, 0));
         lblText2.setText("Please admit");
 
         lblYrSec.setFont(new java.awt.Font("Arial Narrow", 1, 20)); // NOI18N
-        lblYrSec.setForeground(new java.awt.Color(0, 0, 0));
         lblYrSec.setText("Year & Section:");
 
         cbxYear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -143,7 +138,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         cbxSection.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cbxSection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diamond", "Emerald", "Ruby" }));
+        cbxSection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diamond", "Emerald", "Ruby", "Jasmin", "Sampaguita", "Waling-Waling", "Lithium", "Sodium", "Potassium", "Gluon", "Muon", "Graviton", "Rigel", "Polaris", "Sirius", "Curie", "Einstein", "Tesla" }));
         cbxSection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxSectionActionPerformed(evt);
@@ -153,11 +148,9 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(229, 229, 229));
 
         lblOffense.setFont(new java.awt.Font("Arial Narrow", 1, 22)); // NOI18N
-        lblOffense.setForeground(new java.awt.Color(0, 0, 0));
         lblOffense.setText("OFFENSE:");
 
         ckbxAbsent.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        ckbxAbsent.setForeground(new java.awt.Color(0, 0, 0));
         ckbxAbsent.setText("Absent   -");
         ckbxAbsent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +159,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxTardy.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        ckbxTardy.setForeground(new java.awt.Color(0, 0, 0));
         ckbxTardy.setText("Tardy     -");
         ckbxTardy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +167,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxCutting.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        ckbxCutting.setForeground(new java.awt.Color(0, 0, 0));
         ckbxCutting.setText("Cutting  -");
         ckbxCutting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,21 +174,18 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
             }
         });
 
-        txtMinutes.setBackground(new java.awt.Color(255, 255, 255));
         txtMinutes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMinutesActionPerformed(evt);
             }
         });
 
-        txtClasses.setBackground(new java.awt.Color(255, 255, 255));
         txtClasses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtClassesActionPerformed(evt);
             }
         });
 
-        txtDays.setBackground(new java.awt.Color(255, 255, 255));
         txtDays.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDaysActionPerformed(evt);
@@ -205,15 +193,12 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         lblMinutes.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblMinutes.setForeground(new java.awt.Color(0, 0, 0));
         lblMinutes.setText("min/s");
 
         lblDays.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblDays.setForeground(new java.awt.Color(0, 0, 0));
         lblDays.setText("day/s");
 
         lblClasses.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblClasses.setForeground(new java.awt.Color(0, 0, 0));
         lblClasses.setText("class/es");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -268,16 +253,12 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        txtLName.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtGName.setBackground(new java.awt.Color(255, 255, 255));
         txtGName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGNameActionPerformed(evt);
             }
         });
 
-        txtMI.setBackground(new java.awt.Color(255, 255, 255));
         txtMI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMIActionPerformed(evt);
@@ -285,28 +266,23 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         lblLName.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
-        lblLName.setForeground(new java.awt.Color(0, 0, 0));
         lblLName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblLName.setText("Last Name");
 
         lblGName.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
-        lblGName.setForeground(new java.awt.Color(0, 0, 0));
         lblGName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGName.setText("Given Name");
 
         lblMI.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
-        lblMI.setForeground(new java.awt.Color(0, 0, 0));
         lblMI.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMI.setText("M.I.");
 
         jPanel4.setBackground(new java.awt.Color(229, 229, 229));
 
         lblSubjects.setFont(new java.awt.Font("Arial Narrow", 1, 22)); // NOI18N
-        lblSubjects.setForeground(new java.awt.Color(0, 0, 0));
         lblSubjects.setText("SUBJECT/S:");
 
         ckbxBio.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxBio.setForeground(new java.awt.Color(0, 0, 0));
         ckbxBio.setText("Biology ");
         ckbxBio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -315,7 +291,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxChem.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxChem.setForeground(new java.awt.Color(0, 0, 0));
         ckbxChem.setText("Chemistry");
         ckbxChem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,7 +299,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxEng.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxEng.setForeground(new java.awt.Color(0, 0, 0));
         ckbxEng.setText("English ");
         ckbxEng.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,7 +307,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxFil.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxFil.setForeground(new java.awt.Color(0, 0, 0));
         ckbxFil.setText("Filipino ");
         ckbxFil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,7 +315,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxCS.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxCS.setForeground(new java.awt.Color(0, 0, 0));
         ckbxCS.setText("Computer Science ");
         ckbxCS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,7 +323,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxMath.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxMath.setForeground(new java.awt.Color(0, 0, 0));
         ckbxMath.setText("Mathematics ");
         ckbxMath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -360,7 +331,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxPEHM.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxPEHM.setForeground(new java.awt.Color(0, 0, 0));
         ckbxPEHM.setText("P.E.H.M ");
         ckbxPEHM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,7 +339,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxPhy.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxPhy.setForeground(new java.awt.Color(0, 0, 0));
         ckbxPhy.setText("Physics ");
         ckbxPhy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,7 +347,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxSS.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxSS.setForeground(new java.awt.Color(0, 0, 0));
         ckbxSS.setText("Social Science ");
         ckbxSS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,7 +355,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxElective.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxElective.setForeground(new java.awt.Color(0, 0, 0));
         ckbxElective.setText("Elective ");
         ckbxElective.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,7 +363,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxValEd.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxValEd.setForeground(new java.awt.Color(0, 0, 0));
         ckbxValEd.setText("Values Education ");
         ckbxValEd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,7 +371,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxRes.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
-        ckbxRes.setForeground(new java.awt.Color(0, 0, 0));
         ckbxRes.setText("Research");
         ckbxRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -471,10 +436,8 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         );
 
         lblIncDates.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblIncDates.setForeground(new java.awt.Color(0, 0, 0));
         lblIncDates.setText("Inclusive date/s:");
 
-        txtIncDates.setBackground(new java.awt.Color(255, 255, 255));
         txtIncDates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIncDatesActionPerformed(evt);
@@ -482,10 +445,8 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         lblReason.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblReason.setForeground(new java.awt.Color(0, 0, 0));
         lblReason.setText("Reason:");
 
-        txtReason.setBackground(new java.awt.Color(255, 255, 255));
         txtReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtReasonActionPerformed(evt);
@@ -493,25 +454,20 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         lblAttach.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblAttach.setForeground(new java.awt.Color(0, 0, 0));
         lblAttach.setText("Attachments:");
 
         ckbxMedCert.setFont(new java.awt.Font("Segoe UI Historic", 0, 17)); // NOI18N
-        ckbxMedCert.setForeground(new java.awt.Color(0, 0, 0));
         ckbxMedCert.setText("Medical Certificate");
         ckbxMedCert.setMargin(new java.awt.Insets(1, 1, 1, 1));
 
         ckbxLetter.setFont(new java.awt.Font("Segoe UI Historic", 0, 17)); // NOI18N
-        ckbxLetter.setForeground(new java.awt.Color(0, 0, 0));
         ckbxLetter.setText("Letter from Parent/Guardian");
         ckbxLetter.setMargin(new java.awt.Insets(1, 1, 1, 1));
 
         lblCertBy.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblCertBy.setForeground(new java.awt.Color(0, 0, 0));
         lblCertBy.setText("Certified by:");
 
         ckbxHSU.setFont(new java.awt.Font("Segoe UI Historic", 1, 17)); // NOI18N
-        ckbxHSU.setForeground(new java.awt.Color(0, 0, 0));
         ckbxHSU.setText("HSU");
         ckbxHSU.setMargin(new java.awt.Insets(1, 1, 1, 1));
         ckbxHSU.addActionListener(new java.awt.event.ActionListener() {
@@ -521,7 +477,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxGSU.setFont(new java.awt.Font("Segoe UI Historic", 1, 17)); // NOI18N
-        ckbxGSU.setForeground(new java.awt.Color(0, 0, 0));
         ckbxGSU.setText("GSU");
         ckbxGSU.setMargin(new java.awt.Insets(1, 1, 1, 1));
         ckbxGSU.addActionListener(new java.awt.event.ActionListener() {
@@ -533,11 +488,9 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(229, 229, 229));
 
         lblRegistrar.setFont(new java.awt.Font("Arial Narrow", 1, 22)); // NOI18N
-        lblRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         lblRegistrar.setText("Registrar:");
 
         ckbxExcused.setFont(new java.awt.Font("Segoe UI Historic", 1, 17)); // NOI18N
-        ckbxExcused.setForeground(new java.awt.Color(0, 0, 0));
         ckbxExcused.setText("Excused");
         ckbxExcused.setMargin(new java.awt.Insets(1, 1, 1, 1));
         ckbxExcused.addActionListener(new java.awt.event.ActionListener() {
@@ -547,7 +500,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxUnexcused.setFont(new java.awt.Font("Segoe UI Historic", 1, 17)); // NOI18N
-        ckbxUnexcused.setForeground(new java.awt.Color(0, 0, 0));
         ckbxUnexcused.setText("Unexcused");
         ckbxUnexcused.setMargin(new java.awt.Insets(1, 1, 1, 1));
         ckbxUnexcused.addActionListener(new java.awt.event.ActionListener() {
@@ -557,25 +509,20 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         lblDateIssued.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblDateIssued.setForeground(new java.awt.Color(0, 0, 0));
         lblDateIssued.setText("Date issued:");
 
-        txtMonth.setBackground(new java.awt.Color(255, 255, 255));
-        txtMonth.setForeground(new java.awt.Color(0, 0, 0));
         txtMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMonthActionPerformed(evt);
             }
         });
 
-        txtDay.setBackground(new java.awt.Color(255, 255, 255));
         txtDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDayActionPerformed(evt);
             }
         });
 
-        txtYear.setBackground(new java.awt.Color(255, 255, 255));
         txtYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtYearActionPerformed(evt);
@@ -583,23 +530,18 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("/");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("/");
 
         lblMonth.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblMonth.setForeground(new java.awt.Color(0, 0, 0));
         lblMonth.setText("mm");
 
         lblDate.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(0, 0, 0));
         lblDate.setText("dd");
 
         lblYear.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
-        lblYear.setForeground(new java.awt.Color(0, 0, 0));
         lblYear.setText("yy");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -669,7 +611,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
                                 .addComponent(lblMonth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lblRegistrar)
-                        .addGap(0, 24, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -681,6 +623,11 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1243,6 +1190,11 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        new AdmissionSlipForm().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments

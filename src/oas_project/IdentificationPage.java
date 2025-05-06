@@ -200,12 +200,13 @@ public class IdentificationPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisrtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisrtrarActionPerformed
-        // TODO add your handling code here:
+         new RegistrarOption().setVisible(true);
+         this.setVisible(false);
     }//GEN-LAST:event_btnRegisrtrarActionPerformed
 
     private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
-        new TeacherSignInPage().setVisible(true);
-        IdentificationPage.this.setVisible(false);
+       new TeacherOption().setVisible(true);
+       this.setVisible(false);
         
         
     }//GEN-LAST:event_btnTeacherActionPerformed
