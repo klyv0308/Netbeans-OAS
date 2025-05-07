@@ -59,7 +59,6 @@ public class IdentificationPage extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("WELCOME TO");
 
-        btnTeacher.setBackground(new java.awt.Color(255, 255, 255));
         btnTeacher.setFont(new java.awt.Font("Sylfaen", 1, 19)); // NOI18N
         btnTeacher.setForeground(new java.awt.Color(51, 51, 51));
         btnTeacher.setText("Teacher");
@@ -195,17 +194,18 @@ public class IdentificationPage extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(809, 573));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisrtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisrtrarActionPerformed
-        // TODO add your handling code here:
+         new RegistrarOption().setVisible(true);
+         this.setVisible(false);
     }//GEN-LAST:event_btnRegisrtrarActionPerformed
 
     private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
-        new TeacherSignInPage().setVisible(true);
-        IdentificationPage.this.setVisible(false);
+       new TeacherOption().setVisible(true);
+       this.setVisible(false);
         
         
     }//GEN-LAST:event_btnTeacherActionPerformed

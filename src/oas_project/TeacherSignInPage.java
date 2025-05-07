@@ -4,6 +4,8 @@
  */
 package oas_project;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author AykAyz
@@ -14,8 +16,9 @@ public class TeacherSignInPage extends javax.swing.JFrame {
      * Creates new form TeacherSignInPage
      */
     public TeacherSignInPage() {
+        setExtendedState(JFrame.MAXIMIZED_BOTH);  
         initComponents();
-        cbxSubjects1.setSelectedItem(null);
+        cbxSubjHandl.setSelectedItem(null);
     }
 
     /**
@@ -26,193 +29,252 @@ public class TeacherSignInPage extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        cbxSubjects1 = new javax.swing.JComboBox<>();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        lblUsername = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        cbxSubjHandl = new javax.swing.JComboBox<>();
         cbxGLevels = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        cbxSubjects3 = new javax.swing.JComboBox<>();
+        lblSubjHandl = new javax.swing.JLabel();
+        lblGLevels = new javax.swing.JLabel();
+        cbxYesOrNo = new javax.swing.JComboBox<>();
+        lblElecSubj = new javax.swing.JLabel();
+        lblIfYesOrNo = new javax.swing.JLabel();
+        cbxElecSubj = new javax.swing.JComboBox<>();
+        btnSignIn = new javax.swing.JButton();
+        lblSecHandl1 = new javax.swing.JLabel();
+        lblSecHandl2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaSecHandl = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
 
         jPanel2.setBackground(new java.awt.Color(206, 206, 206));
+        jPanel2.setPreferredSize(new java.awt.Dimension(640, 421));
 
-        jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Name:");
+        lblName.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblName.setForeground(new java.awt.Color(0, 0, 0));
+        lblName.setText("Name:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setText("Last Name, First Name M.I.");
+        txtName.setBackground(new java.awt.Color(255, 255, 255));
+        txtName.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
+        txtName.setForeground(new java.awt.Color(0, 0, 0));
+        txtName.setText("Last Name, First Name M.I.");
 
-        jLabel3.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Username:");
+        lblUsername.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(0, 0, 0));
+        lblUsername.setText("Username:");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        txtUsername.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsername.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Password:");
+        lblPassword.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(0, 0, 0));
+        lblPassword.setText("Password:");
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
+        txtPassword.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtPasswordActionPerformed(evt);
             }
         });
 
-        cbxSubjects1.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
-        cbxSubjects1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTEGRATED SCIENCE", "BIOLOGY", "CHEMISTRY", "PHYSICS", "MATHEMATICS", "ENGLISH", "FILIPINO", "SOCIAL SCIENCE", "P.E.H.M.", "VALED", "ADTECH", "STATISTICS", "(STEM) RESEARCH", "COMPUTER SCIENCE", "EARTH SCIENCE", " " }));
-        cbxSubjects1.addActionListener(new java.awt.event.ActionListener() {
+        cbxSubjHandl.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        cbxSubjHandl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTEGRATED SCIENCE", "BIOLOGY", "CHEMISTRY", "PHYSICS", "MATHEMATICS", "ENGLISH", "FILIPINO", "SOCIAL SCIENCE", "P.E.H.M.", "VALED", "ADTECH", "STATISTICS", "(STEM) RESEARCH", "COMPUTER SCIENCE", "EARTH SCIENCE" }));
+        cbxSubjHandl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxSubjects1ActionPerformed(evt);
+                cbxSubjHandlActionPerformed(evt);
             }
         });
 
         cbxGLevels.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
         cbxGLevels.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7", "8", "9", "10", "11", "12", " " }));
-
-        jLabel5.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Subject handling:");
-
-        jLabel6.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Grade level handling:");
-
-        jComboBox1.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "YES", "NO", " " }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbxGLevels.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbxGLevelsActionPerformed(evt);
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Are you handling elective subjects?");
+        lblSubjHandl.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblSubjHandl.setForeground(new java.awt.Color(0, 0, 0));
+        lblSubjHandl.setText("Subject handling:");
 
-        jLabel9.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("If yes, subject handling:");
+        lblGLevels.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblGLevels.setForeground(new java.awt.Color(0, 0, 0));
+        lblGLevels.setText("Grade level handling:");
 
-        cbxSubjects3.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
-        cbxSubjects3.addActionListener(new java.awt.event.ActionListener() {
+        cbxYesOrNo.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        cbxYesOrNo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "YES", "NO" }));
+        cbxYesOrNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxSubjects3ActionPerformed(evt);
+                cbxYesOrNoActionPerformed(evt);
             }
         });
+
+        lblElecSubj.setBackground(new java.awt.Color(0, 0, 0));
+        lblElecSubj.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblElecSubj.setForeground(new java.awt.Color(0, 0, 0));
+        lblElecSubj.setText("Are you handling elective subjects?");
+
+        lblIfYesOrNo.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblIfYesOrNo.setForeground(new java.awt.Color(0, 0, 0));
+        lblIfYesOrNo.setText("If yes, subject handling:");
+
+        cbxElecSubj.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
+        cbxElecSubj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENGINEERING SCIENCE 1", "ENGINEERING SCIENCE 2", "TECHNOLOGY 1", "TECHNOLOGY 2", "AGRICULTURE 1", "AGRICULTURE 2" }));
+        cbxElecSubj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxElecSubjActionPerformed(evt);
+            }
+        });
+
+        btnSignIn.setBackground(new java.awt.Color(0, 102, 255));
+        btnSignIn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSignIn.setText("SIGN IN");
+        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignInActionPerformed(evt);
+            }
+        });
+
+        lblSecHandl1.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblSecHandl1.setForeground(new java.awt.Color(0, 0, 0));
+        lblSecHandl1.setText("Section/s Handling:");
+        lblSecHandl1.setAlignmentY(0.0F);
+
+        lblSecHandl2.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
+        lblSecHandl2.setForeground(new java.awt.Color(0, 0, 0));
+        lblSecHandl2.setText("Section/s Handling:");
+        lblSecHandl2.setAlignmentY(0.0F);
+
+        txtAreaSecHandl.setBackground(new java.awt.Color(255, 255, 255));
+        txtAreaSecHandl.setColumns(20);
+        txtAreaSecHandl.setLineWrap(true);
+        txtAreaSecHandl.setRows(5);
+        txtAreaSecHandl.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(txtAreaSecHandl);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
+                .addGap(167, 167, 167)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblUsername)
+                    .addComponent(lblPassword)
+                    .addComponent(lblName))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxSubjects1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel6))
-                    .addComponent(cbxGLevels, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxSubjects3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(lblSecHandl1))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblSecHandl2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cbxGLevels, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblGLevels)
+                                .addGap(12, 12, 12))
+                            .addComponent(cbxSubjHandl, 0, 174, Short.MAX_VALUE))
+                        .addGap(115, 115, 115)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbxYesOrNo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbxElecSubj, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jLabel4)))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(214, 214, 214))
+                                .addComponent(lblIfYesOrNo)))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(107, 107, 107)
-                        .addComponent(jLabel2)
-                        .addGap(99, 99, 99))))
+                        .addComponent(lblSubjHandl)
+                        .addGap(100, 100, 100)
+                        .addComponent(lblElecSubj)
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(129, 129, 129))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblName)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUsername)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPassword))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2))
+                    .addComponent(lblSubjHandl)
+                    .addComponent(lblElecSubj))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxSubjects1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxSubjHandl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxYesOrNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel9))
+                    .addComponent(lblGLevels)
+                    .addComponent(lblIfYesOrNo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxGLevels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxSubjects3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(251, Short.MAX_VALUE))
+                    .addComponent(cbxElecSubj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSecHandl1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSecHandl2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,20 +288,21 @@ public class TeacherSignInPage extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(750, 580));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxSubjects1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSubjects1ActionPerformed
+    private void cbxSubjHandlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSubjHandlActionPerformed
         // TODO add your handling code here:
         try {
-            if (cbxSubjects1.getSelectedItem().equals("INTEGRATED SCIENCE")){
+            if (cbxSubjHandl.getSelectedItem().equals("INTEGRATED SCIENCE")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
                 cbxGLevels.addItem("7");
                 cbxGLevels.addItem("8");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("BIOLOGY")){
+            } else if (cbxSubjHandl.getSelectedItem().equals("BIOLOGY")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -248,7 +311,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("CHEMISTRY")){
+            } else if (cbxSubjHandl.getSelectedItem().equals("CHEMISTRY")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -257,7 +320,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("PHYSICS")){
+            } else if (cbxSubjHandl.getSelectedItem().equals("PHYSICS")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -266,18 +329,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("MATHEMATICS")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("7");
-                cbxGLevels.addItem("8");
-                cbxGLevels.addItem("9");
-                cbxGLevels.addItem("10");
-                cbxGLevels.addItem("11");
-                cbxGLevels.addItem("12");
-
-            } else if (cbxSubjects1.getSelectedItem().equals("ENGLISH")){
+            } else if (cbxSubjHandl.getSelectedItem().equals("MATHEMATICS")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -288,7 +340,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("FILIPINO")){
+            } else if (cbxSubjHandl.getSelectedItem().equals("ENGLISH")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -299,7 +351,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("SOCIAL SCIENCE")){
+            } else if (cbxSubjHandl.getSelectedItem().equals("FILIPINO")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -310,46 +362,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("P.E.H.M.")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("7");
-                cbxGLevels.addItem("8");
-                cbxGLevels.addItem("9");
-                cbxGLevels.addItem("10");
-
-            } else if (cbxSubjects1.getSelectedItem().equals("VALED")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("7");
-                cbxGLevels.addItem("8");
-                cbxGLevels.addItem("9");
-                cbxGLevels.addItem("10");
-
-            } else if (cbxSubjects1.getSelectedItem().equals("ADTECH")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("7");
-                cbxGLevels.addItem("8");
-
-            } else if (cbxSubjects1.getSelectedItem().equals("STATISTICS")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("9");
-
-            } else if (cbxSubjects1.getSelectedItem().equals("(STEM) RESEARCH")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);
-                cbxGLevels.addItem("10");
-                cbxGLevels.addItem("11");
-                cbxGLevels.addItem("12");
-
-            } else if (cbxSubjects1.getSelectedItem().equals("COMPUTER SCIENCE")){
+            } else if (cbxSubjHandl.getSelectedItem().equals("SOCIAL SCIENCE")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);
@@ -360,50 +373,142 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                 cbxGLevels.addItem("11");
                 cbxGLevels.addItem("12");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("EARTH SCIENCE")){
+            } else if (cbxSubjHandl.getSelectedItem().equals("P.E.H.M.")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("7");
+                cbxGLevels.addItem("8");
+                cbxGLevels.addItem("9");
+                cbxGLevels.addItem("10");
+
+            } else if (cbxSubjHandl.getSelectedItem().equals("VALED")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("7");
+                cbxGLevels.addItem("8");
+                cbxGLevels.addItem("9");
+                cbxGLevels.addItem("10");
+
+            } else if (cbxSubjHandl.getSelectedItem().equals("ADTECH")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("7");
+                cbxGLevels.addItem("8");
+
+            } else if (cbxSubjHandl.getSelectedItem().equals("STATISTICS")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("9");
+
+            } else if (cbxSubjHandl.getSelectedItem().equals("(STEM) RESEARCH")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("10");
+                cbxGLevels.addItem("11");
+                cbxGLevels.addItem("12");
+
+            } else if (cbxSubjHandl.getSelectedItem().equals("COMPUTER SCIENCE")){
+
+                cbxGLevels.removeAllItems();
+                cbxGLevels.setSelectedItem(null);
+                cbxGLevels.addItem("7");
+                cbxGLevels.addItem("8");
+                cbxGLevels.addItem("9");
+                cbxGLevels.addItem("10");
+                cbxGLevels.addItem("11");
+                cbxGLevels.addItem("12");
+
+            } else if (cbxSubjHandl.getSelectedItem().equals("EARTH SCIENCE")){
 
                 cbxGLevels.removeAllItems();
                 cbxGLevels.setSelectedItem(null);                        
                 cbxGLevels.addItem("8");
 
-            } else if (cbxSubjects1.getSelectedItem().equals("ENGINEERING SCIENCE")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);                        
-                cbxGLevels.addItem("11");
-                cbxGLevels.addItem("12");
-
-            } else if (cbxSubjects1.getSelectedItem().equals("TECHNOLOGY")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);                        
-                cbxGLevels.addItem("11");
-                cbxGLevels.addItem("12");
-
-            } else if (cbxSubjects1.getSelectedItem().equals("AGRICULTURE")){
-
-                cbxGLevels.removeAllItems();
-                cbxGLevels.setSelectedItem(null);                        
-                cbxGLevels.addItem("11");
-                cbxGLevels.addItem("12");
-
-            }
+            } 
         } catch (Exception e) {
             System.out.println(e);
         }
-    }//GEN-LAST:event_cbxSubjects1ActionPerformed
+    }//GEN-LAST:event_cbxSubjHandlActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbxYesOrNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxYesOrNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        try {
+            if (cbxYesOrNo.getSelectedItem().equals("YES")){
 
-    private void cbxSubjects3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxSubjects3ActionPerformed
+                    cbxElecSubj.removeAllItems();
+                    cbxElecSubj.setSelectedItem(null);                        
+                    cbxElecSubj.addItem("ENGINEERING SCIENCE 1");
+                    cbxElecSubj.addItem("ENGINEERING SCIENCE 2");
+                    cbxElecSubj.addItem("TECHNOLOGY 1");
+                    cbxElecSubj.addItem("TECHNOLOGY 2");
+                    cbxElecSubj.addItem("AGRICULTURE 1");
+                    cbxElecSubj.addItem("AGRICULTURE 2");
+
+                } else if (cbxYesOrNo.getSelectedItem().equals("NO")){
+
+                    cbxElecSubj.removeAllItems();
+                    cbxElecSubj.setSelectedItem(null);                        
+                    cbxElecSubj.addItem("N/A");
+
+                } 
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_cbxYesOrNoActionPerformed
+
+    private void cbxElecSubjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxElecSubjActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxSubjects3ActionPerformed
+    }//GEN-LAST:event_cbxElecSubjActionPerformed
+
+    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
+        new AdmissionSlipForm(). setVisible(true);
+         this.setVisible(false);
+    }//GEN-LAST:event_btnSignInActionPerformed
+
+    private void cbxGLevelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxGLevelsActionPerformed
+        // TODO add your handling code here:
+        //my code contains 3 jtextfields, name, username, and password. it also has 4 
+//        try {
+//            if (cbxSubjHandl.getSelectedItem().equals("INTEGRATED SCIENCE") && cbxGLevels.getSelectedItem().equals("7")){
+//
+//                cbxSecHandl1.removeAllItems();
+//                cbxSecHandl1.setSelectedItem(null);
+//                cbxSecHandl1.addItem("Diamond");
+//                cbxSecHandl1.addItem("Emerald");
+//                cbxSecHandl1.addItem("Ruby");
+//
+//            } else if (cbxSubjHandl.getSelectedItem().equals("INTEGRATED SCIENCE") && cbxGLevels.getSelectedItem().equals("8")){
+//
+//                cbxSecHandl1.removeAllItems();
+//                cbxSecHandl1.setSelectedItem(null);
+//                cbxSecHandl1.addItem("Jasmin");
+//                cbxSecHandl1.addItem("Sampaguita");
+//                cbxSecHandl1.addItem("Waling-Waling");
+//
+//            }  else if (cbxSubjHandl.getSelectedItem().equals("Biology") || cbxGLevels.getSelectedItem().equals("8")){
+//
+//                cbxSecHandl1.removeAllItems();
+//                cbxSecHandl1.setSelectedItem(null);
+//                cbxSecHandl1.addItem("Jasmin");
+//                cbxSecHandl1.addItem("Sampaguita");
+//                cbxSecHandl1.addItem("Waling-Waling");
+//
+//            } 
+//        }catch (Exception e ) {
+//        System.out.println(e);
+//        
+//        }
+    }//GEN-LAST:event_cbxGLevelsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,21 +546,26 @@ public class TeacherSignInPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSignIn;
+    private javax.swing.JComboBox<String> cbxElecSubj;
     private javax.swing.JComboBox<String> cbxGLevels;
-    private javax.swing.JComboBox<String> cbxSubjects1;
-    private javax.swing.JComboBox<String> cbxSubjects3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> cbxSubjHandl;
+    private javax.swing.JComboBox<String> cbxYesOrNo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblElecSubj;
+    private javax.swing.JLabel lblGLevels;
+    private javax.swing.JLabel lblIfYesOrNo;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblSecHandl1;
+    private javax.swing.JLabel lblSecHandl2;
+    private javax.swing.JLabel lblSubjHandl;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JTextArea txtAreaSecHandl;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
