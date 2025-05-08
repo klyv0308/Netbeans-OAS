@@ -4,7 +4,12 @@
  */
 package oas_project;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +23,8 @@ public class TeacherSignInPage extends javax.swing.JFrame {
     public TeacherSignInPage() {
         setExtendedState(JFrame.MAXIMIZED_BOTH);  
         initComponents();
-        cbxSubjHandl.setSelectedItem(null);
+        cbxGLevels.setSelectedItem(null);
+        cbxElecSubj.setSelectedItem(null);
     }
 
     /**
@@ -51,14 +57,17 @@ public class TeacherSignInPage extends javax.swing.JFrame {
         lblSecHandl1 = new javax.swing.JLabel();
         lblSecHandl2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtAreaSecHandl = new javax.swing.JTextArea();
+        txtAreaSecHandl2 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAreaSecHandl1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(206, 206, 206));
-        jPanel2.setPreferredSize(new java.awt.Dimension(640, 421));
+        jPanel2.setPreferredSize(new java.awt.Dimension(650, 421));
 
         lblName.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
         lblName.setForeground(new java.awt.Color(0, 0, 0));
@@ -99,7 +108,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
         });
 
         cbxGLevels.setFont(new java.awt.Font("Sylfaen", 0, 12)); // NOI18N
-        cbxGLevels.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7", "8", "9", "10", "11", "12", " " }));
+        cbxGLevels.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7", "8", "9", "10", "11", "12" }));
         cbxGLevels.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxGLevelsActionPerformed(evt);
@@ -158,19 +167,62 @@ public class TeacherSignInPage extends javax.swing.JFrame {
         lblSecHandl2.setText("Section/s Handling:");
         lblSecHandl2.setAlignmentY(0.0F);
 
-        txtAreaSecHandl.setBackground(new java.awt.Color(255, 255, 255));
-        txtAreaSecHandl.setColumns(20);
-        txtAreaSecHandl.setLineWrap(true);
-        txtAreaSecHandl.setRows(5);
-        txtAreaSecHandl.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(txtAreaSecHandl);
+        txtAreaSecHandl2.setBackground(new java.awt.Color(255, 255, 255));
+        txtAreaSecHandl2.setColumns(20);
+        txtAreaSecHandl2.setLineWrap(true);
+        txtAreaSecHandl2.setRows(5);
+        txtAreaSecHandl2.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(txtAreaSecHandl2);
+
+        txtAreaSecHandl1.setBackground(new java.awt.Color(255, 255, 255));
+        txtAreaSecHandl1.setColumns(20);
+        txtAreaSecHandl1.setLineWrap(true);
+        txtAreaSecHandl1.setRows(5);
+        txtAreaSecHandl1.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(txtAreaSecHandl1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 52, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cbxGLevels, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lblGLevels)
+                                    .addGap(12, 12, 12))
+                                .addComponent(cbxSubjHandl, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(lblSecHandl1)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cbxYesOrNo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbxElecSubj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGap(6, 6, 6)
+                                            .addComponent(lblIfYesOrNo))))
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblSecHandl2)
+                                .addGap(46, 46, 46))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblSubjHandl)
+                        .addGap(37, 37, 37)
+                        .addComponent(lblElecSubj)))
+                .addGap(34, 34, 34))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(167, 167, 167)
+                .addGap(129, 129, 129)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblUsername)
                     .addComponent(lblPassword)
@@ -181,48 +233,15 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(lblSecHandl1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblSecHandl2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cbxGLevels, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblGLevels)
-                                .addGap(12, 12, 12))
-                            .addComponent(cbxSubjHandl, 0, 174, Short.MAX_VALUE))
-                        .addGap(115, 115, 115)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbxYesOrNo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxElecSubj, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lblIfYesOrNo)))
-                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblSubjHandl)
-                        .addGap(100, 100, 100)
-                        .addComponent(lblElecSubj)
-                        .addGap(58, 58, 58))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -251,44 +270,39 @@ public class TeacherSignInPage extends javax.swing.JFrame {
                     .addComponent(cbxGLevels, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxElecSubj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblSecHandl1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSecHandl1)
+                    .addComponent(lblSecHandl2))
+                .addGap(3, 3, 3)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSecHandl2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 52;
+        gridBagConstraints.ipady = 21;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(21, 85, 24, 85);
+        jPanel1.add(jPanel2, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(750, 580));
+        setSize(new java.awt.Dimension(698, 532));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -471,8 +485,60 @@ public class TeacherSignInPage extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxElecSubjActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-        new AdmissionSlipForm(). setVisible(true);
-         this.setVisible(false);
+        // Name, Username, Password
+        String name = txtName.getText().trim();
+        String username = txtUsername.getText().trim();
+        String passwordT = txtPassword.getText().trim();
+        
+        // Grade and Section handling
+        String subjHandling = (String) cbxSubjHandl.getSelectedItem();
+        String yearHandling = (String) cbxGLevels.getSelectedItem();
+        String section = txtAreaSecHandl1.getText().trim();
+
+        // Elective
+        String yesORno = (String) cbxYesOrNo.getSelectedItem();
+        String elecSubject = (String) cbxElecSubj.getSelectedItem();
+        String sectionElec = txtAreaSecHandl2.getText().trim();
+        
+        // Database
+        String url = "jdbc:mysql://localhost:3306/oas_database";
+        String user = "root";
+        String password = "mysql-DB1502";
+        
+        // Inserting input to database
+        String sql = "INSERT INTO teacher_data (teacher_name, username, teacher_password, subject_handling, year_handling, section_handling, elective_handling, elective_subject, elective_section) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+        
+        try (Connection conn = DriverManager.getConnection(url, user, password);
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+           // Set both parameters (this prevents the "parameter 2" error)
+           stmt.setString(1, name);
+           stmt.setString(2, username);
+           stmt.setString(3, passwordT);
+           stmt.setString(4, subjHandling);
+           stmt.setString(5, yearHandling);
+           stmt.setString(6, section);
+           stmt.setString(7, yesORno); 
+           stmt.setString(8, elecSubject); 
+           stmt.setString(9, sectionElec); 
+           
+
+
+           stmt.executeUpdate();
+           conn.close();
+           JOptionPane.showMessageDialog(null, "Record saved:\n" + "Name of Teacher: " + name + "\n" + "Username: " + username + "\n" + "Password: " + passwordT
+                                         + "\n" + "Subject Handling: " + subjHandling + "\n" + "Grade Level Handling: " + yearHandling + "\n" + "Section/s: " + section + "\n" + "Handling Elective Subject?: " + yesORno + "\n" + "Elective Subject: " + elecSubject 
+                                         + "\n" + "Section/s: " + sectionElec);
+
+       } catch (SQLException ex) {
+           // This catches and shows the exact SQL error
+           ex.printStackTrace(); // Shows error in the console
+           JOptionPane.showMessageDialog(null, "Error saving record:\n" + ex.getMessage());
+       }
+
+
+        
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void cbxGLevelsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxGLevelsActionPerformed
@@ -554,6 +620,7 @@ public class TeacherSignInPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblElecSubj;
     private javax.swing.JLabel lblGLevels;
     private javax.swing.JLabel lblIfYesOrNo;
@@ -563,7 +630,8 @@ public class TeacherSignInPage extends javax.swing.JFrame {
     private javax.swing.JLabel lblSecHandl2;
     private javax.swing.JLabel lblSubjHandl;
     private javax.swing.JLabel lblUsername;
-    private javax.swing.JTextArea txtAreaSecHandl;
+    private javax.swing.JTextArea txtAreaSecHandl1;
+    private javax.swing.JTextArea txtAreaSecHandl2;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUsername;

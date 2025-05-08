@@ -9,8 +9,13 @@ import javax.swing.*;         // All Swing components like JFrame, JButton, JLab
 import java.awt.*;            // Layout managers like FlowLayout
 import java.awt.event.*;      // Event handling like ActionListener, ActionEvent
 import java.sql.*;            // JDBC classes like Connection, DriverManager, PreparedStatement, SQLException
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 /**
@@ -19,12 +24,25 @@ import java.util.List;
  */
 public class AdmissionSlipForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AdmissionSlipForm
-     */
+    private ButtonGroup excusedUnexcused;
+    private ButtonGroup offenseGroup;
+
     public AdmissionSlipForm() {
         setExtendedState(JFrame.MAXIMIZED_BOTH);    
         initComponents();
+        
+        // Initialize the ButtonGroup
+        excusedUnexcused = new ButtonGroup();
+        excusedUnexcused.add(rbtnExcused);
+        excusedUnexcused.add(rbtnUnexcused);
+        
+        offenseGroup = new ButtonGroup();
+        offenseGroup.add(rbtnAbsent);
+        offenseGroup.add(rbtnTardy);
+        offenseGroup.add(rbtnCutting);
+        
+        cbxYear.setSelectedItem(null);
+        cbxSection.setSelectedItem(null);
     }
 
     /**
@@ -91,8 +109,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         ckbxGSU = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         lblRegistrar = new javax.swing.JLabel();
-        ckbxExcused = new javax.swing.JCheckBox();
-        ckbxUnexcused = new javax.swing.JCheckBox();
         lblDateIssued = new javax.swing.JLabel();
         txtMonth = new javax.swing.JTextField();
         txtDay = new javax.swing.JTextField();
@@ -102,6 +118,8 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         lblMonth = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblYear = new javax.swing.JLabel();
+        rbtnExcused = new javax.swing.JRadioButton();
+        rbtnUnexcused = new javax.swing.JRadioButton();
         btnSubmit = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -114,27 +132,34 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jPanel2.setBackground(new java.awt.Color(206, 206, 206));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setPreferredSize(new java.awt.Dimension(900, 600));
 
         lblHdr1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblHdr1.setForeground(new java.awt.Color(0, 0, 0));
         lblHdr1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHdr1.setText("Philippine Science High School - ZRC");
 
         lblHdr2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblHdr2.setForeground(new java.awt.Color(0, 0, 0));
         lblHdr2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHdr2.setText("Class Admission Slip");
 
         lblText1.setFont(new java.awt.Font("Arial Narrow", 1, 20)); // NOI18N
+        lblText1.setForeground(new java.awt.Color(0, 0, 0));
         lblText1.setText("To all teachers concerned:");
 
         lblText2.setFont(new java.awt.Font("Arial Narrow", 1, 20)); // NOI18N
+        lblText2.setForeground(new java.awt.Color(0, 0, 0));
         lblText2.setText("Please admit");
 
         lblYrSec.setFont(new java.awt.Font("Arial Narrow", 1, 20)); // NOI18N
+        lblYrSec.setForeground(new java.awt.Color(0, 0, 0));
         lblYrSec.setText("Year & Section:");
 
+        cbxYear.setBackground(new java.awt.Color(255, 255, 255));
         cbxYear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cbxYear.setForeground(new java.awt.Color(0, 0, 0));
         cbxYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "7", "8", "9", "10", "11", "12" }));
         cbxYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +167,9 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
             }
         });
 
+        cbxSection.setBackground(new java.awt.Color(255, 255, 255));
         cbxSection.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cbxSection.setForeground(new java.awt.Color(0, 0, 0));
         cbxSection.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diamond", "Emerald", "Ruby", "Jasmin", "Sampaguita", "Waling-Waling", "Lithium", "Sodium", "Potassium", "Gluon", "Muon", "Graviton", "Rigel", "Polaris", "Sirius", "Curie", "Einstein", "Tesla" }));
         cbxSection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,8 +178,10 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         jPanel3.setBackground(new java.awt.Color(229, 229, 229));
+        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
         lblOffense.setFont(new java.awt.Font("Arial Narrow", 1, 22)); // NOI18N
+        lblOffense.setForeground(new java.awt.Color(0, 0, 0));
         lblOffense.setText("OFFENSE:");
 
         txtMinutes.setBackground(new java.awt.Color(255, 255, 255));
@@ -181,9 +210,11 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         lblMinutes.setText("min/s");
 
         lblDays.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        lblDays.setForeground(new java.awt.Color(0, 0, 0));
         lblDays.setText("day/s");
 
         lblClasses.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        lblClasses.setForeground(new java.awt.Color(0, 0, 0));
         lblClasses.setText("class/es");
 
         rbtnAbsent.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -275,12 +306,19 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
+        txtLName.setBackground(new java.awt.Color(255, 255, 255));
+        txtLName.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtGName.setBackground(new java.awt.Color(255, 255, 255));
+        txtGName.setForeground(new java.awt.Color(0, 0, 0));
         txtGName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGNameActionPerformed(evt);
             }
         });
 
+        txtMI.setBackground(new java.awt.Color(255, 255, 255));
+        txtMI.setForeground(new java.awt.Color(0, 0, 0));
         txtMI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMIActionPerformed(evt);
@@ -288,23 +326,29 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         lblLName.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
+        lblLName.setForeground(new java.awt.Color(0, 0, 0));
         lblLName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblLName.setText("Last Name");
 
         lblGName.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
+        lblGName.setForeground(new java.awt.Color(0, 0, 0));
         lblGName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGName.setText("Given Name");
 
         lblMI.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
+        lblMI.setForeground(new java.awt.Color(0, 0, 0));
         lblMI.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMI.setText("M.I.");
 
         jPanel4.setBackground(new java.awt.Color(229, 229, 229));
+        jPanel4.setForeground(new java.awt.Color(0, 0, 0));
 
         lblSubjects.setFont(new java.awt.Font("Arial Narrow", 1, 22)); // NOI18N
+        lblSubjects.setForeground(new java.awt.Color(0, 0, 0));
         lblSubjects.setText("SUBJECT/S:");
 
         ckbxBio.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxBio.setForeground(new java.awt.Color(0, 0, 0));
         ckbxBio.setText("Biology ");
         ckbxBio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,6 +357,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxChem.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxChem.setForeground(new java.awt.Color(0, 0, 0));
         ckbxChem.setText("Chemistry");
         ckbxChem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,6 +366,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxEng.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxEng.setForeground(new java.awt.Color(0, 0, 0));
         ckbxEng.setText("English ");
         ckbxEng.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,6 +375,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxFil.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxFil.setForeground(new java.awt.Color(0, 0, 0));
         ckbxFil.setText("Filipino ");
         ckbxFil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,6 +384,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxCS.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxCS.setForeground(new java.awt.Color(0, 0, 0));
         ckbxCS.setText("Computer Science ");
         ckbxCS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,6 +393,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxMath.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxMath.setForeground(new java.awt.Color(0, 0, 0));
         ckbxMath.setText("Mathematics ");
         ckbxMath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,6 +402,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxPEHM.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxPEHM.setForeground(new java.awt.Color(0, 0, 0));
         ckbxPEHM.setText("P.E.H.M ");
         ckbxPEHM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -361,6 +411,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxPhy.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxPhy.setForeground(new java.awt.Color(0, 0, 0));
         ckbxPhy.setText("Physics ");
         ckbxPhy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -369,6 +420,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxSS.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxSS.setForeground(new java.awt.Color(0, 0, 0));
         ckbxSS.setText("Social Science ");
         ckbxSS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -377,6 +429,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxElective.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxElective.setForeground(new java.awt.Color(0, 0, 0));
         ckbxElective.setText("Elective ");
         ckbxElective.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,6 +438,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxValEd.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxValEd.setForeground(new java.awt.Color(0, 0, 0));
         ckbxValEd.setText("Values Education ");
         ckbxValEd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -393,6 +447,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxRes.setFont(new java.awt.Font("Segoe UI Historic", 1, 16)); // NOI18N
+        ckbxRes.setForeground(new java.awt.Color(0, 0, 0));
         ckbxRes.setText("Research");
         ckbxRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,7 +482,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
                     .addComponent(ckbxValEd)
                     .addComponent(ckbxElective)
                     .addComponent(ckbxSS))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,8 +513,11 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         );
 
         lblIncDates.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        lblIncDates.setForeground(new java.awt.Color(0, 0, 0));
         lblIncDates.setText("Inclusive date/s:");
 
+        txtIncDates.setBackground(new java.awt.Color(255, 255, 255));
+        txtIncDates.setForeground(new java.awt.Color(0, 0, 0));
         txtIncDates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIncDatesActionPerformed(evt);
@@ -467,9 +525,11 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         lblReason.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        lblReason.setForeground(new java.awt.Color(0, 0, 0));
         lblReason.setText("Reason:");
 
         lblAttach.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        lblAttach.setForeground(new java.awt.Color(0, 0, 0));
         lblAttach.setText("Attachments:");
 
         ckbxMedCert.setFont(new java.awt.Font("Segoe UI Historic", 0, 17)); // NOI18N
@@ -478,13 +538,16 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         ckbxMedCert.setMargin(new java.awt.Insets(1, 1, 1, 1));
 
         ckbxLetter.setFont(new java.awt.Font("Segoe UI Historic", 0, 17)); // NOI18N
+        ckbxLetter.setForeground(new java.awt.Color(0, 0, 0));
         ckbxLetter.setText("Letter from Parent/Guardian");
         ckbxLetter.setMargin(new java.awt.Insets(1, 1, 1, 1));
 
         lblCertBy.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        lblCertBy.setForeground(new java.awt.Color(0, 0, 0));
         lblCertBy.setText("Certified by:");
 
         ckbxHSU.setFont(new java.awt.Font("Segoe UI Historic", 1, 17)); // NOI18N
+        ckbxHSU.setForeground(new java.awt.Color(0, 0, 0));
         ckbxHSU.setText("HSU");
         ckbxHSU.setMargin(new java.awt.Insets(1, 1, 1, 1));
         ckbxHSU.addActionListener(new java.awt.event.ActionListener() {
@@ -503,31 +566,17 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         jPanel5.setBackground(new java.awt.Color(229, 229, 229));
+        jPanel5.setForeground(new java.awt.Color(0, 0, 0));
 
         lblRegistrar.setFont(new java.awt.Font("Arial Narrow", 1, 22)); // NOI18N
+        lblRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         lblRegistrar.setText("Registrar:");
 
-        ckbxExcused.setFont(new java.awt.Font("Segoe UI Historic", 1, 17)); // NOI18N
-        ckbxExcused.setText("Excused");
-        ckbxExcused.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        ckbxExcused.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckbxExcusedActionPerformed(evt);
-            }
-        });
-
-        ckbxUnexcused.setFont(new java.awt.Font("Segoe UI Historic", 1, 17)); // NOI18N
-        ckbxUnexcused.setText("Unexcused");
-        ckbxUnexcused.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        ckbxUnexcused.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ckbxUnexcusedActionPerformed(evt);
-            }
-        });
-
         lblDateIssued.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        lblDateIssued.setForeground(new java.awt.Color(0, 0, 0));
         lblDateIssued.setText("Date issued:");
 
+        txtMonth.setBackground(new java.awt.Color(255, 255, 255));
         txtMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMonthActionPerformed(evt);
@@ -541,6 +590,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
             }
         });
 
+        txtYear.setBackground(new java.awt.Color(255, 255, 255));
         txtYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtYearActionPerformed(evt);
@@ -548,9 +598,11 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("/");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("/");
 
         lblMonth.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
@@ -562,23 +614,41 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         lblYear.setFont(new java.awt.Font("Segoe UI Emoji", 1, 16)); // NOI18N
         lblYear.setText("yy");
 
+        rbtnExcused.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        rbtnExcused.setForeground(new java.awt.Color(0, 0, 0));
+        rbtnExcused.setText("Excused");
+        rbtnExcused.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnExcusedActionPerformed(evt);
+            }
+        });
+
+        rbtnUnexcused.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        rbtnUnexcused.setForeground(new java.awt.Color(0, 0, 0));
+        rbtnUnexcused.setText("Unexcused");
+        rbtnUnexcused.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnUnexcusedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addComponent(lblRegistrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblDateIssued)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(ckbxExcused)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ckbxUnexcused)
+                        .addGap(16, 16, 16)
+                        .addComponent(rbtnExcused)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtnUnexcused)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -617,22 +687,22 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
                             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(ckbxUnexcused, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ckbxExcused, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblYear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblMonth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblYear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMonth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lblRegistrar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 25, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbtnExcused)
+                            .addComponent(rbtnUnexcused))))
                 .addContainerGap())
         );
 
+        btnSubmit.setForeground(new java.awt.Color(0, 0, 0));
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -640,75 +710,27 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
             }
         });
 
+        btnReset.setForeground(new java.awt.Color(0, 0, 0));
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
 
         txtAreaReason.setBackground(new java.awt.Color(255, 255, 255));
         txtAreaReason.setColumns(20);
         txtAreaReason.setLineWrap(true);
         txtAreaReason.setRows(5);
+        txtAreaReason.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtAreaReason);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(378, 378, 378)
-                .addComponent(lblHdr2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(334, 334, 334))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblHdr1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblText1)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(lblIncDates)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtIncDates))
-                                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(lblReason)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jScrollPane1)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                            .addComponent(lblCertBy)
-                                            .addGap(61, 61, 61))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(lblAttach)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(ckbxMedCert)
-                                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                                        .addComponent(ckbxLetter)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(ckbxHSU)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                        .addComponent(ckbxGSU))))
-                                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(lblText2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtGName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtMI, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(103, 103, 103)
-                                    .addComponent(lblYrSec)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(cbxSection, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap())))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -725,15 +747,69 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(260, 260, 260))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblHdr1, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblText1)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lblIncDates)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtIncDates))
+                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lblReason)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jScrollPane1)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(lblCertBy)
+                                    .addGap(61, 61, 61))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lblAttach)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ckbxMedCert)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(ckbxLetter)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(ckbxHSU)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(ckbxGSU))))
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(lblText2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblHdr2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(txtGName, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtMI, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(103, 103, 103)
+                                    .addComponent(lblYrSec)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cbxYear, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cbxSection, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblHdr1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblHdr2)
-                .addGap(16, 16, 16)
+                .addGap(22, 22, 22)
                 .addComponent(lblText1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -774,7 +850,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
                             .addComponent(ckbxLetter, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -785,20 +861,19 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 52, 35, 54);
+        gridBagConstraints.insets = new java.awt.Insets(31, 79, 41, 72);
         jPanel1.add(jPanel2, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1055, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(1067, 686));
@@ -946,14 +1021,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ckbxGSUActionPerformed
 
-    private void ckbxExcusedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbxExcusedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ckbxExcusedActionPerformed
-
-    private void ckbxUnexcusedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbxUnexcusedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ckbxUnexcusedActionPerformed
-
     private void txtMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMonthActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMonthActionPerformed
@@ -968,10 +1035,11 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // Student name
-        String lastName = txtLName.getText().trim();
-        String firstName = txtGName.getText().trim();
-        String middleInitial = txtMI.getText().trim();
-        String fullName = null;  // Declare it first
+        String lastName = capitalizeEachWord(txtLName.getText().trim());
+        String firstName = capitalizeEachWord(txtGName.getText().trim());
+        String middleInitial = txtMI.getText().trim().toUpperCase(); // or capitalize if needed
+
+        String fullName = null;
         StringBuilder errorMsg = new StringBuilder();
 
         // Check if any of the fields are empty
@@ -984,33 +1052,51 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         if (middleInitial.isEmpty()) {
             errorMsg.append("• Middle Initial is required.\n");
         }
+        if (!middleInitial.isEmpty()) {
+        if (middleInitial.length() == 1) {
+            middleInitial += ".";
+        } else if (middleInitial.length() == 2 && middleInitial.charAt(1) != '.') {
+            middleInitial = middleInitial.charAt(0) + ".";
+        }
+        }
 
-        // If any field is empty, show an error message
+        // Show error if any field is empty
         if (errorMsg.length() > 0) {
             JOptionPane.showMessageDialog(null, "Please correct the following:\n" + errorMsg);
             return;
         }
 
-        // Now validate character content with .matches()
         try {
+            // Validate character content
             if (!lastName.matches("[a-zA-Z\\s\\-']+")) {
-                throw new IllegalArgumentException("Last Name must contain only alphabetic characters.");
+                throw new IllegalArgumentException("Last Name must contain only letters, spaces, hyphens, or apostrophes.");
             }
             if (!firstName.matches("[a-zA-Z\\s\\-']+")) {
-                throw new IllegalArgumentException("First Name must contain only alphabetic characters.");
+                throw new IllegalArgumentException("First Name must contain only letters, spaces, hyphens, or apostrophes.");
             }
             if (!middleInitial.matches("[a-zA-Z](\\.)?")) {
-                throw new IllegalArgumentException("Middle Initial must be a single letter.");
+                throw new IllegalArgumentException("Middle Initial must be a single letter (with optional period).");
             }
 
-            // If validation passes, build the full name
+            // Capitalize each word in first and last name
+            lastName = capitalizeEachWord(lastName);
+            firstName = capitalizeEachWord(firstName);
+
+            // Capitalize middle initial only
+            middleInitial = middleInitial.toUpperCase();
+
+            // Construct full name
             fullName = lastName + ", " + firstName + " " + middleInitial;
 
+            // Optional: store fullName somewhere or display
+            System.out.println("Formatted Full Name: " + fullName);
+
         } catch (IllegalArgumentException e) {
-            // If validation fails, show the error message
             JOptionPane.showMessageDialog(null, e.getMessage());
-            return; // Stop further processing if validation fails
+            return;
         }
+
+        
 
         // Year-Section
         String year = (String) cbxYear.getSelectedItem();
@@ -1063,23 +1149,23 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         try {
             List<String> selectedSubjects = new ArrayList<>();
 
-            if (ckbxBio != null && ckbxBio.isSelected()) selectedSubjects.add(ckbxBio.getText());
-            if (ckbxChem != null && ckbxChem.isSelected()) selectedSubjects.add(ckbxChem.getText());
-            if (ckbxCS != null && ckbxCS.isSelected()) selectedSubjects.add(ckbxCS.getText());
-            if (ckbxEng != null && ckbxEng.isSelected()) selectedSubjects.add(ckbxEng.getText());
-            if (ckbxFil != null && ckbxFil.isSelected()) selectedSubjects.add(ckbxFil.getText());
-            if (ckbxMath != null && ckbxMath.isSelected()) selectedSubjects.add(ckbxMath.getText());
-            if (ckbxPEHM != null && ckbxPEHM.isSelected()) selectedSubjects.add(ckbxPEHM.getText());
-            if (ckbxPhy != null && ckbxPhy.isSelected()) selectedSubjects.add(ckbxPhy.getText());
-            if (ckbxRes != null && ckbxRes.isSelected()) selectedSubjects.add(ckbxRes.getText());
-            if (ckbxSS != null && ckbxSS.isSelected()) selectedSubjects.add(ckbxSS.getText());
-            if (ckbxElective != null && ckbxElective.isSelected()) selectedSubjects.add(ckbxElective.getText());
-            if (ckbxValEd != null && ckbxValEd.isSelected()) selectedSubjects.add(ckbxValEd.getText());
+            if (ckbxBio != null && ckbxBio.isSelected()) selectedSubjects.add(" • " + ckbxBio.getText());
+            if (ckbxChem != null && ckbxChem.isSelected()) selectedSubjects.add(" • " + ckbxChem.getText());
+            if (ckbxCS != null && ckbxCS.isSelected()) selectedSubjects.add(" • " + ckbxCS.getText());
+            if (ckbxEng != null && ckbxEng.isSelected()) selectedSubjects.add(" • " + ckbxEng.getText());
+            if (ckbxFil != null && ckbxFil.isSelected()) selectedSubjects.add(" • " + ckbxFil.getText());
+            if (ckbxMath != null && ckbxMath.isSelected()) selectedSubjects.add(" • " + ckbxMath.getText());
+            if (ckbxPEHM != null && ckbxPEHM.isSelected()) selectedSubjects.add(" • " + ckbxPEHM.getText());
+            if (ckbxPhy != null && ckbxPhy.isSelected()) selectedSubjects.add(" • " + ckbxPhy.getText());
+            if (ckbxRes != null && ckbxRes.isSelected()) selectedSubjects.add(" • " + ckbxRes.getText());
+            if (ckbxSS != null && ckbxSS.isSelected()) selectedSubjects.add(" • " + ckbxSS.getText());
+            if (ckbxElective != null && ckbxElective.isSelected()) selectedSubjects.add(" • " + ckbxElective.getText());
+            if (ckbxValEd != null && ckbxValEd.isSelected()) selectedSubjects.add(" • " + ckbxValEd.getText());
 
             if (selectedSubjects.isEmpty()) {
                 throw new IllegalArgumentException("Please select at least one subject.");
             }
-//eirugciufgruoghrochgorhgothuthuothgcp
+
             subjects = String.join("\n", selectedSubjects);  // Join with newline, or use ", " if preferred
 
         } catch (IllegalArgumentException e) {
@@ -1105,33 +1191,72 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         }
         
         // Attachments
-        List<String> selectedAttachment = new ArrayList<>();
+        String attachment = null;
+        try {
+            List<String> selectedAttachment = new ArrayList<>();
 
-        if (ckbxMedCert.isSelected()) selectedAttachment.add(ckbxMedCert.getText());
-        if (ckbxLetter.isSelected()) selectedAttachment.add(ckbxLetter.getText());
+            if (ckbxMedCert.isSelected()) selectedAttachment.add(" • " + ckbxMedCert.getText());
+            if (ckbxLetter.isSelected()) selectedAttachment.add(" • " + ckbxLetter.getText());
 
-        String attachment = selectedAttachment.isEmpty() ? null : String.join("\n", selectedAttachment);
-        
+            if (selectedAttachment.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please select at least one attachment.");
+                return; // stop further processing
+            }
+
+            attachment = String.join("\n", selectedAttachment);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error retrieving attachments: " + e.getMessage());
+            return;
+        }
+
         // Certified by
-        List<String> certifiedBy = new ArrayList<>();
+        String certified = null;
+        try {
+            List<String> certifiedBy = new ArrayList<>();
 
-        if (ckbxHSU.isSelected()) certifiedBy.add(ckbxHSU.getText());
-        if (ckbxGSU.isSelected()) certifiedBy.add(ckbxGSU.getText());
+            if (ckbxHSU.isSelected()) certifiedBy.add(" • " + ckbxHSU.getText());
+            if (ckbxGSU.isSelected()) certifiedBy.add(" • " + ckbxGSU.getText());
 
-        String certified = certifiedBy.isEmpty() ? null : String.join("\n", certifiedBy);
+            if (certifiedBy.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please select who certified the document.");
+                return; // stop further processing
+            }
+
+            certified = String.join("\n", certifiedBy);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error retrieving certification info: " + e.getMessage());
+            return;
+        }
+
         
         // Registrar
-        List<String> approvedNotApproved = new ArrayList<>();
+        ButtonGroup excusedUnexcused = new ButtonGroup();
+        excusedUnexcused.add(rbtnExcused);
+        excusedUnexcused.add(rbtnUnexcused);
+        String registrar = null;
 
-        if (ckbxExcused.isSelected()) approvedNotApproved.add(ckbxExcused.getText());
-        if (ckbxUnexcused.isSelected()) approvedNotApproved.add(ckbxUnexcused.getText());
-
-        String registrar = approvedNotApproved.isEmpty() ? null : String.join("\n", approvedNotApproved);
+        try {
+            if (rbtnExcused.isSelected()) {
+                registrar = rbtnExcused.getText();
+            } else if (rbtnUnexcused.isSelected()) {
+                registrar = rbtnUnexcused.getText();
+            } else {
+                throw new IllegalArgumentException("Please select 'Excused' OR 'Unexcused'.");
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            return;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "An error occurred while selecting an offense: " + e.getMessage());
+            return;
+        }
         
-        // Date issued
+       
+        // Date Issued
         String mm = txtMonth.getText().trim();
         String dd = txtDay.getText().trim();
         String yy = txtYear.getText().trim();
+        String dateIssued = null;
 
         // Basic numeric validation
         if (!mm.matches("\\d{1,2}") || !dd.matches("\\d{1,2}") || !yy.matches("\\d{2,4}")) {
@@ -1139,16 +1264,21 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
             return;
         }
 
-        // Optional: zero-padding for single digits
+        // Normalize values
         if (mm.length() == 1) mm = "0" + mm;
         if (dd.length() == 1) dd = "0" + dd;
-        if (yy.length() == 4) yy = yy.substring(2); // convert 2025 to 25
+        if (yy.length() == 2) yy = "20" + yy; // Convert 25 to 2025
 
-        String dateIssued = mm + "/" + dd + "/" + yy;  // e.g., "04/30/25"
+        String fullDate = yy + "-" + mm + "-" + dd; // format as YYYY-MM-DD
 
-
-
-
+        // Check if it's a valid date
+        try {
+            LocalDate parsedDate = LocalDate.of(Integer.parseInt(yy), Integer.parseInt(mm), Integer.parseInt(dd));
+            dateIssued = parsedDate.format(DateTimeFormatter.ofPattern("MM/dd/yy"));
+        } catch (DateTimeException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid date. Please enter a valid calendar date.");
+            return;
+        }
 
 
         // Database
@@ -1181,9 +1311,9 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
 
            stmt.executeUpdate();
            conn.close();
-           JOptionPane.showMessageDialog(null, "Record saved:\n" + "Student Name: " + fullName + "\n" + "Year and Section: " + yearAndSection + "\n" + "Offense: " + offense
-                                         + "\n" + "Minute/s: " + minute + "\n" + "Day/s: " + days + "\n" + "Class/es: " + classes + "\n" + "Subject/s missed: " + subjects + "\n" + "Inclusive Dates: " + inclusiveDates 
-                                         + "\n" + "Reason: " + reason + "\n" + "Attachment/s: " + attachment + "\n" + "Certified By: " + certified + "\n" + "Student is [" + registrar + "]" + "\n" + "Date Issued: " + dateIssued);
+           JOptionPane.showMessageDialog(null, "RECORD SAVED:\n" + "Student Name: " + fullName + "\n" + "Year and Section: " + yearAndSection + "\n" + "Offense: " + offense
+                                         + "\n" + "Minute/s: " + minute + "\n" + "Day/s: " + days + "\n" + "Class/es: " + classes + "\n" + "Subject/s missed: " + "\n" + subjects + "\n" + "Inclusive Dates: " + inclusiveDates 
+                                         + "\n" + "Reason: " + reason + "\n" + "Attachment/s: " + "\n" + attachment + "\n" + "Certified By: " + "\n" + certified + "\n" + "Student is [" + registrar + "]" + "\n" + "Date Issued: " + dateIssued);
 
        } catch (SQLException ex) {
            // This catches and shows the exact SQL error
@@ -1193,6 +1323,77 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnSubmitActionPerformed
+// --- Helper method to capitalize each word ---
+        public String capitalizeEachWord(String input) {
+        String[] words = input.trim().split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                sb.append(Character.toUpperCase(word.charAt(0)))
+                  .append(word.substring(1).toLowerCase())
+                  .append(" ");
+            }
+        }
+        return sb.toString().trim();
+    }
+
+    private void rbtnUnexcusedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnUnexcusedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnUnexcusedActionPerformed
+
+    private void rbtnExcusedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnExcusedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnExcusedActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // Resetting the text fields
+    txtLName.setText("");
+    txtGName.setText("");
+    txtMI.setText("");    
+    txtMinutes.setText("");
+    txtDays.setText("");
+    txtClasses.setText("");
+    txtIncDates.setText("");
+    txtAreaReason.setText("");
+    txtMonth.setText("");
+    txtDay.setText("");
+    txtYear.setText("");
+
+    // Resetting ComboBoxes
+    cbxYear.setSelectedIndex(-1);  // Deselects item in combobox
+    cbxSection.setSelectedIndex(-1);    // Deselects item in combobox
+
+    // Resetting Checkboxes
+    ckbxMedCert.setSelected(false);
+    ckbxLetter.setSelected(false);
+    ckbxHSU.setSelected(false);
+    ckbxGSU.setSelected(false);
+    
+    // Reset all subject checkboxes
+    JCheckBox[] subjectCheckBoxes = {
+        ckbxBio, ckbxChem, ckbxCS, ckbxEng, ckbxFil,
+        ckbxMath, ckbxPEHM, ckbxPhy, ckbxRes,
+        ckbxSS, ckbxElective, ckbxValEd
+    };
+
+    for (JCheckBox checkBox : subjectCheckBoxes) {
+        if (checkBox != null) checkBox.setSelected(false);
+    }
+
+    // Resetting Radio Buttons (if you have any)
+//    excusedUnexcused.clearSelection();  
+//    offenseGroup.clearSelection();
+    
+    rbtnAbsent.setSelected(false);
+    rbtnTardy.setSelected(false);
+    rbtnExcused.setSelected(false);
+    rbtnExcused.setSelected(false);
+    rbtnUnexcused.setSelected(false);
+
+
+
+    // You can also reset any other component as necessary
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1239,7 +1440,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckbxChem;
     private javax.swing.JCheckBox ckbxElective;
     private javax.swing.JCheckBox ckbxEng;
-    private javax.swing.JCheckBox ckbxExcused;
     private javax.swing.JCheckBox ckbxFil;
     private javax.swing.JCheckBox ckbxGSU;
     private javax.swing.JCheckBox ckbxHSU;
@@ -1250,7 +1450,6 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckbxPhy;
     private javax.swing.JCheckBox ckbxRes;
     private javax.swing.JCheckBox ckbxSS;
-    private javax.swing.JCheckBox ckbxUnexcused;
     private javax.swing.JCheckBox ckbxValEd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
@@ -1287,7 +1486,9 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblYrSec;
     private javax.swing.JRadioButton rbtnAbsent;
     private javax.swing.JRadioButton rbtnCutting;
+    private javax.swing.JRadioButton rbtnExcused;
     private javax.swing.JRadioButton rbtnTardy;
+    private javax.swing.JRadioButton rbtnUnexcused;
     private javax.swing.JTextArea txtAreaReason;
     private javax.swing.JTextField txtClasses;
     private javax.swing.JTextField txtDay;
