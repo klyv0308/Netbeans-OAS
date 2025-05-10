@@ -133,7 +133,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(206, 206, 206));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setPreferredSize(new java.awt.Dimension(900, 600));
+        jPanel2.setPreferredSize(new java.awt.Dimension(906, 612));
 
         lblHdr1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblHdr1.setForeground(new java.awt.Color(0, 0, 0));
@@ -557,6 +557,7 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         });
 
         ckbxGSU.setFont(new java.awt.Font("Segoe UI Historic", 1, 17)); // NOI18N
+        ckbxGSU.setForeground(new java.awt.Color(0, 0, 0));
         ckbxGSU.setText("GSU");
         ckbxGSU.setMargin(new java.awt.Insets(1, 1, 1, 1));
         ckbxGSU.addActionListener(new java.awt.event.ActionListener() {
@@ -862,18 +863,18 @@ public class AdmissionSlipForm extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 79, 41, 72);
+        gridBagConstraints.insets = new java.awt.Insets(37, 82, 29, 63);
         jPanel1.add(jPanel2, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1051, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(1067, 686));
