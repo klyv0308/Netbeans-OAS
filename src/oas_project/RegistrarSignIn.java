@@ -8,8 +8,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -41,21 +43,22 @@ public class RegistrarSignIn extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         btnSignIn = new javax.swing.JButton();
         txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JPasswordField();
+        passwordField = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        togglePasswordCkbx = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 102, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(507, 463));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel2.setBackground(new java.awt.Color(206, 206, 206));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2), "Sign In!", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jPanel2.setPreferredSize(new java.awt.Dimension(350, 315));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102), 2));
+        jPanel2.setPreferredSize(new java.awt.Dimension(400, 394));
 
         txtName.setBackground(new java.awt.Color(255, 255, 255));
-        txtName.setFont(new java.awt.Font("Lucida Fax", 0, 12)); // NOI18N
-        txtName.setForeground(new java.awt.Color(0, 0, 0));
+        txtName.setForeground(new java.awt.Color(51, 51, 51));
         txtName.setText("Name");
         txtName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtName.addActionListener(new java.awt.event.ActionListener() {
@@ -64,8 +67,8 @@ public class RegistrarSignIn extends javax.swing.JFrame {
             }
         });
 
-        btnSignIn.setBackground(new java.awt.Color(0, 102, 255));
-        btnSignIn.setFont(new java.awt.Font("Arial Narrow", 1, 18)); // NOI18N
+        btnSignIn.setBackground(new java.awt.Color(51, 255, 51));
+        btnSignIn.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         btnSignIn.setForeground(new java.awt.Color(255, 255, 255));
         btnSignIn.setText("Sign In");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -75,8 +78,7 @@ public class RegistrarSignIn extends javax.swing.JFrame {
         });
 
         txtUsername.setBackground(new java.awt.Color(255, 255, 255));
-        txtUsername.setFont(new java.awt.Font("Lucida Fax", 0, 12)); // NOI18N
-        txtUsername.setForeground(new java.awt.Color(0, 0, 0));
+        txtUsername.setForeground(new java.awt.Color(51, 51, 51));
         txtUsername.setText("Username");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,13 +86,31 @@ public class RegistrarSignIn extends javax.swing.JFrame {
             }
         });
 
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
-        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
-        txtPassword.setText("password");
-        txtPassword.setDragEnabled(true);
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.setBackground(new java.awt.Color(255, 255, 255));
+        passwordField.setForeground(new java.awt.Color(51, 51, 51));
+        passwordField.setText("Password");
+        passwordField.setDragEnabled(true);
+        passwordField.setFocusAccelerator('\u2022');
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
+            }
+        });
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyTyped(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 22)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel1.setText("Sign In!");
+
+        togglePasswordCkbx.setForeground(new java.awt.Color(0, 0, 0));
+        togglePasswordCkbx.setIcon(new javax.swing.ImageIcon("C:\\Users\\AykAyz\\Documents\\AYK FILES\\G10_CS4_Q4\\CS4_GProject\\OAS_Project\\src\\images\\eye-slash.png")); // NOI18N
+        togglePasswordCkbx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglePasswordCkbxActionPerformed(evt);
             }
         });
 
@@ -99,33 +119,49 @@ public class RegistrarSignIn extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(passwordField)
+                                    .addComponent(txtUsername)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(togglePasswordCkbx))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(togglePasswordCkbx)
+                        .addGap(40, 40, 40)))
                 .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(75, 79, 73, 78);
+        gridBagConstraints.insets = new java.awt.Insets(33, 52, 36, 55);
         jPanel1.add(jPanel2, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,42 +183,43 @@ public class RegistrarSignIn extends javax.swing.JFrame {
        // Name, Username, Password
         String name = txtName.getText().trim();
         String username = txtUsername.getText().trim();
-        String passwordR = String.valueOf(txtPassword.getPassword());
-        
+        String passwordR = String.valueOf(passwordField.getPassword());
+
         // Database
         String url = "jdbc:mysql://localhost:3306/oas_database";
         String user = "root";
         String password = "mysql-DB1502";
-        
-        // Inserting input to database
-        String sql = "INSERT INTO registrar_data (registrar_name, username, registrar_password) VALUES (?, ?, ?);";
 
-        
+        // SQL Insert Statement
+        String sql = "INSERT INTO registrar_data (registrar_name, registrar_username, registrar_password) VALUES (?, ?, ?);";
+
         try (Connection conn = DriverManager.getConnection(url, user, password);
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-           // Set both parameters (this prevents the "parameter 2" error)
-           stmt.setString(1, name);
-           stmt.setString(2, username);
-           stmt.setString(3, passwordR);           
+            stmt.setString(1, name);
+            stmt.setString(2, username);
+            stmt.setString(3, passwordR);
 
-           stmt.executeUpdate();
-           conn.close();
-           JOptionPane.showMessageDialog(null, "Record saved:\n" + "Name of Registrar: " + name + "\n" + "Username: " + username + "\n" + "Password: " + passwordR);
+            stmt.executeUpdate();
 
-       } catch (SQLException ex) {
-           // This catches and shows the exact SQL error
-           ex.printStackTrace(); // Shows error in the console
-           JOptionPane.showMessageDialog(null, "Error saving record:\n" + ex.getMessage());
-       }
+            JOptionPane.showMessageDialog(null, "Record saved:\n" + 
+                "Name of Registrar: " + name + "\n" + 
+                "Username: " + username + "\n" + 
+                "Password: " + passwordR);
 
-        new AdmissionSlipForm().setVisible(true);
-        this.setVisible(false);
+            // Only show login form if insert is successful
+            new RegistrarLogIn().setVisible(true);
+            this.setVisible(false);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error saving record:\n" + ex.getMessage());
+        }
     }//GEN-LAST:event_btnSignInActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
@@ -191,6 +228,47 @@ public class RegistrarSignIn extends javax.swing.JFrame {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void passwordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyTyped
+        // Store the original echo character — do this only once!
+        if (passwordField.getClientProperty("originalEchoChar") == null) {
+            passwordField.putClientProperty("originalEchoChar", passwordField.getEchoChar());
+        }
+
+        char originalEchoChar = (char) passwordField.getClientProperty("originalEchoChar");
+
+        // Ignore control keys like backspace
+        if (!Character.isISOControl(evt.getKeyChar())) {
+            passwordField.setEchoChar((char) 0); // Show input as normal text
+
+            // Set up a timer to hide the character after 1 second
+            Timer timer = new Timer(1000, e -> {
+                passwordField.setEchoChar(originalEchoChar); // Restore dot masking
+            });
+            timer.setRepeats(false);
+            timer.start();
+        }
+
+    }//GEN-LAST:event_passwordFieldKeyTyped
+
+    private void togglePasswordCkbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglePasswordCkbxActionPerformed
+        // Load the icons (adjust path if needed)
+        ImageIcon eyeIcon = new ImageIcon(getClass().getResource("/images/eye.png"));
+        ImageIcon eyeSlashIcon = new ImageIcon(getClass().getResource("/images/eye-slash.png"));
+
+        if (passwordField.getClientProperty("originalEchoChar") == null) {
+            passwordField.putClientProperty("originalEchoChar", passwordField.getEchoChar());
+        }
+        char originalEchoChar = (char) passwordField.getClientProperty("originalEchoChar");
+
+        if (togglePasswordCkbx.isSelected()) {
+            passwordField.setEchoChar((char) 0); // show password
+            togglePasswordCkbx.setIcon(eyeIcon);
+        } else {
+            passwordField.setEchoChar(originalEchoChar); // hide password
+            togglePasswordCkbx.setIcon(eyeSlashIcon);
+        }
+    }//GEN-LAST:event_togglePasswordCkbxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,10 +307,12 @@ public class RegistrarSignIn extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignIn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JCheckBox togglePasswordCkbx;
     private javax.swing.JTextField txtName;
-    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
