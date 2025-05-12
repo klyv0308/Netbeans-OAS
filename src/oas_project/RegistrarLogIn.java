@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 
 /**
@@ -39,43 +41,79 @@ public class RegistrarLogIn extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblUsename = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JTextField();
         btnLogIn = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        togglePasswordCkbx = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 0, 153));
+        jPanel1.setPreferredSize(new java.awt.Dimension(507, 463));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        lblUsename.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        lblUsename.setText("Username:");
+        jPanel2.setPreferredSize(new java.awt.Dimension(380, 370));
 
-        lblPassword.setFont(new java.awt.Font("Sylfaen", 1, 16)); // NOI18N
-        lblPassword.setText("Password:");
-
-        txtUsername.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
+        txtUsername.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsername.setForeground(new java.awt.Color(51, 51, 51));
+        txtUsername.setText("Username");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
             }
         });
 
-        txtPassword.setFont(new java.awt.Font("Sylfaen", 0, 14)); // NOI18N
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
-
-        btnLogIn.setBackground(new java.awt.Color(0, 102, 255));
-        btnLogIn.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
-        btnLogIn.setText("LOG IN");
+        btnLogIn.setBackground(new java.awt.Color(51, 153, 255));
+        btnLogIn.setFont(new java.awt.Font("Leelawadee UI", 0, 17)); // NOI18N
+        btnLogIn.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogIn.setText("Log In");
         btnLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogInActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 76));
+        jLabel1.setText("Log");
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("In");
+
+        passwordField.setBackground(new java.awt.Color(255, 255, 255));
+        passwordField.setForeground(new java.awt.Color(51, 51, 51));
+        passwordField.setText("Password");
+        passwordField.setDragEnabled(true);
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyTyped(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\AykAyz\\Documents\\AYK FILES\\G10_CS4_Q4\\CS4_GProject\\OAS_Project\\src\\images\\return_icon_24px.png")); // NOI18N
+        jButton1.setToolTipText("return");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        togglePasswordCkbx.setForeground(new java.awt.Color(0, 0, 0));
+        togglePasswordCkbx.setIcon(new javax.swing.ImageIcon("C:\\Users\\AykAyz\\Documents\\AYK FILES\\G10_CS4_Q4\\CS4_GProject\\OAS_Project\\src\\images\\eye-slash.png")); // NOI18N
+        togglePasswordCkbx.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglePasswordCkbxActionPerformed(evt);
             }
         });
 
@@ -84,56 +122,63 @@ public class RegistrarLogIn extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(83, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPassword)
-                            .addComponent(lblUsename))
+                        .addContainerGap()
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(passwordField)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addComponent(togglePasswordCkbx))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsename, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword))
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnLogIn)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(togglePasswordCkbx)
+                        .addGap(39, 39, 39)))
+                .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74))
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 158;
-        gridBagConstraints.ipady = 84;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(74, 89, 76, 98);
-        jPanel1.add(jPanel2, gridBagConstraints);
+        jPanel1.add(jPanel2, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(647, 363));
+        setSize(new java.awt.Dimension(523, 471));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -141,13 +186,9 @@ public class RegistrarLogIn extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         String username = txtUsername.getText().trim();
-        String passwordR = new String(txtPassword.getText()).trim();
+        String passwordR = new String(passwordField.getText()).trim();
         
         // Database
         String url = "jdbc:mysql://localhost:3306/oas_database";
@@ -155,7 +196,7 @@ public class RegistrarLogIn extends javax.swing.JFrame {
         String password = "mysql-DB1502";
         
         // SQL query to check if username and password match
-        String sql = "SELECT * FROM registrar_data WHERE username = ? AND registrar_password = ?";
+        String sql = "SELECT * FROM registrar_data WHERE registrar_username = ? AND registrar_password = ?";
         
         try (Connection conn = DriverManager.getConnection(url, user, password);
             PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -189,6 +230,59 @@ public class RegistrarLogIn extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnLogInActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // For Return button
+        new RegistrarOption().setVisible(true);
+        this.setVisible(false);
+
+        // Or for Return/Back
+        this.dispose(); // or navigate to previous frame
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void passwordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyTyped
+        // Store the original echo character — do this only once!
+        if (passwordField.getClientProperty("originalEchoChar") == null) {
+            passwordField.putClientProperty("originalEchoChar", passwordField.getEchoChar());
+        }
+
+        char originalEchoChar = (char) passwordField.getClientProperty("originalEchoChar");
+
+        // Ignore control keys like backspace
+        if (!Character.isISOControl(evt.getKeyChar())) {
+            passwordField.setEchoChar((char) 0); // Show input as normal text
+
+            // Set up a timer to hide the character after 1 second
+            Timer timer = new Timer(1000, e -> {
+                passwordField.setEchoChar(originalEchoChar); // Restore dot masking
+            });
+            timer.setRepeats(false);
+            timer.start();
+        }
+    }//GEN-LAST:event_passwordFieldKeyTyped
+
+    private void togglePasswordCkbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglePasswordCkbxActionPerformed
+        // Load the icons (adjust path if needed)
+        ImageIcon eyeIcon = new ImageIcon(getClass().getResource("/images/eye.png"));
+        ImageIcon eyeSlashIcon = new ImageIcon(getClass().getResource("/images/eye-slash.png"));
+
+        if (passwordField.getClientProperty("originalEchoChar") == null) {
+            passwordField.putClientProperty("originalEchoChar", passwordField.getEchoChar());
+        }
+        char originalEchoChar = (char) passwordField.getClientProperty("originalEchoChar");
+
+        if (togglePasswordCkbx.isSelected()) {
+            passwordField.setEchoChar((char) 0); // show password
+            togglePasswordCkbx.setIcon(eyeIcon);
+        } else {
+            passwordField.setEchoChar(originalEchoChar); // hide password
+            togglePasswordCkbx.setIcon(eyeSlashIcon);
+        }
+    }//GEN-LAST:event_togglePasswordCkbxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,11 +321,13 @@ public class RegistrarLogIn extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogIn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblUsename;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JCheckBox togglePasswordCkbx;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

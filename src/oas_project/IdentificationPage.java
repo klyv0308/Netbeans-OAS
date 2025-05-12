@@ -4,6 +4,7 @@
  */
 package oas_project;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -44,38 +45,62 @@ public class IdentificationPage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 100));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jPanel2.setBackground(new java.awt.Color(206, 206, 206));
+        jPanel2.setBackground(new java.awt.Color(10, 20, 20));
         jPanel2.setAlignmentX(0.0F);
         jPanel2.setAlignmentY(0.0F);
-        jPanel2.setPreferredSize(new java.awt.Dimension(450, 450));
+        jPanel2.setPreferredSize(new java.awt.Dimension(519, 438));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 26)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("WELCOME TO");
 
-        btnTeacher.setFont(new java.awt.Font("Sylfaen", 1, 19)); // NOI18N
-        btnTeacher.setForeground(new java.awt.Color(51, 51, 51));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel3.setForeground(new java.awt.Color(204, 204, 255));
+
+        btnTeacher.setBackground(new java.awt.Color(204, 204, 255));
+        btnTeacher.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 19)); // NOI18N
+        btnTeacher.setForeground(new java.awt.Color(14, 16, 16));
         btnTeacher.setText("Teacher");
         btnTeacher.setAlignmentY(0.0F);
         btnTeacher.setBorder(null);
+        btnTeacher.setBorderPainted(false);
+        btnTeacher.setFocusPainted(false);
+        btnTeacher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnTeacherMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTeacherMouseExited(evt);
+            }
+        });
         btnTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTeacherActionPerformed(evt);
             }
         });
 
-        btnRegisrtrar.setFont(new java.awt.Font("Sylfaen", 0, 19)); // NOI18N
+        btnRegisrtrar.setBackground(new java.awt.Color(204, 204, 255));
+        btnRegisrtrar.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 19)); // NOI18N
+        btnRegisrtrar.setForeground(new java.awt.Color(14, 16, 16));
         btnRegisrtrar.setText("Registrar");
         btnRegisrtrar.setActionCommand("jButton2");
         btnRegisrtrar.setAlignmentY(0.0F);
         btnRegisrtrar.setBorder(null);
+        btnRegisrtrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegisrtrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegisrtrarMouseExited(evt);
+            }
+        });
         btnRegisrtrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisrtrarActionPerformed(evt);
@@ -97,33 +122,35 @@ public class IdentificationPage extends javax.swing.JFrame {
             .addComponent(btnRegisrtrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("nline");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 0, 51));
         jLabel3.setText("Please identify yourself below:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 25)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 0, 153));
         jLabel4.setText("O");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 25)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 0, 76));
         jLabel5.setText("A");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("dmission");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 255, 51));
+        jLabel7.setFont(new java.awt.Font("Verdana", 1, 25)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 0, 153));
         jLabel7.setText("S");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("lip");
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\AykAyz\\Documents\\AYK FILES\\G10_CS4_Q4\\CS4_GProject\\OAS_Project\\src\\images\\100px.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -131,43 +158,45 @@ public class IdentificationPage extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(107, 107, 107))
+                        .addComponent(jLabel10)
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel8))
+                            .addComponent(jLabel1)))
+                    .addComponent(jLabel3))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -176,10 +205,8 @@ public class IdentificationPage extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 93;
-        gridBagConstraints.ipady = 140;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(87, 145, 90, 159);
+        gridBagConstraints.insets = new java.awt.Insets(60, 132, 67, 142);
         jPanel1.add(jPanel2, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,6 +238,26 @@ public class IdentificationPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnTeacherActionPerformed
 
+    private void btnTeacherMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseEntered
+        btnTeacher.setBackground(new Color(102,102,102));
+        btnTeacher.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnTeacherMouseEntered
+
+    private void btnTeacherMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseExited
+        btnTeacher.setBackground(new Color(204,204,255));
+        btnTeacher.setForeground(new Color(14,16,16));
+    }//GEN-LAST:event_btnTeacherMouseExited
+
+    private void btnRegisrtrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisrtrarMouseEntered
+        btnRegisrtrar.setBackground(new Color(102,102,102));
+        btnRegisrtrar.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnRegisrtrarMouseEntered
+
+    private void btnRegisrtrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegisrtrarMouseExited
+        btnRegisrtrar.setBackground(new Color(204,204,255));
+        btnRegisrtrar.setForeground(new Color(14,16,16));
+    }//GEN-LAST:event_btnRegisrtrarMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -226,6 +273,7 @@ public class IdentificationPage extends javax.swing.JFrame {
     private javax.swing.JButton btnRegisrtrar;
     private javax.swing.JButton btnTeacher;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
